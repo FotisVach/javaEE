@@ -21,7 +21,7 @@ import com.javaee.fotis.enums.Language;
 public class Book {
 	/** Primary key */
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "book_seq")
 	private Long id;
 	/** Book'stitle */
 	@Column(length = 200)

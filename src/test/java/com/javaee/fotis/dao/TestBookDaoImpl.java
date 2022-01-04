@@ -26,8 +26,8 @@ class TestBookDaoImpl {
 	@Test
 	void test() {
 		// Test that no books exists
-		assertEquals(0L, sut.countAll());
-		assertEquals(0L, sut.findAll().size());
+		Long booksInDb = sut.countAll();
+		assertEquals(sut.countAll(), sut.findAll().size());
 		// Create a book
 		Book b = new Book();
 		String bookTitle = "A brief history of time"; //$NON-NLS-1$
@@ -45,17 +45,18 @@ class TestBookDaoImpl {
 		// Check the found book
 		assertEquals(bookTitle, newBook.getTitle());
 		assertEquals(bookauthor, newBook.getAuthor());
+		System.out.println(newBook);
 		
 		// Test that counts books
-		assertEquals(1L, sut.countAll());
-		assertEquals(1L, sut.findAll().size());
+		assertEquals(booksInDb + 1, sut.countAll());
+		assertEquals(booksInDb + 1, sut.findAll().size());
 		
 		// Delete the new book
 		sut.delete(bookKey);
 		
 		// Test that no books exists
-		assertEquals(0L, sut.countAll());
-		assertEquals(0L, sut.findAll().size());
+		assertEquals(booksInDb, sut.countAll());
+		assertEquals(booksInDb, sut.findAll().size());
 	}
 
 }
