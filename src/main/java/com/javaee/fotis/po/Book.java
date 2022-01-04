@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import com.javaee.fotis.enums.Language;
 
@@ -16,30 +19,36 @@ import com.javaee.fotis.enums.Language;
  */
 @Entity
 public class Book {
-
+	/** Primary key */
 	@Id
 	@GeneratedValue
-	private Long id;
-	
+	private Long id;	
+	/** Book'stitle */
 	@Column(length = 200)
+	@NotNull
+	@Size(min = 1, max = 200)
 	private String title;
-	
+	/** Book's decription */
 	@Column(length = 1000)
+	@Size(min = 1, max = 1000)
 	private String description;
-	
+	/** Book's cost */
 	@Column(name = "unit_cost")
 	private Float unitCost;
-	
+	/** Book's isbn */
+	@NotNull
+	@Size(min = 1, max = 50)
 	private String isbn;
-	
+	/** Book's publication date */
 	@Column(name = "publication_date")
 	@Temporal(TemporalType.DATE)
+	@Past
 	private Date publicationDate;
-	
+	/** Book's number of pages */
 	private Integer numberOfPages;
-	
+	/** Book's image url */
 	private String imageUrl;
-	
+	/** Book's language */
 	private Language language;
 
 	/**
