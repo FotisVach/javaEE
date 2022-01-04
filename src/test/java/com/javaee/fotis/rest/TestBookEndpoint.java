@@ -24,14 +24,7 @@ import com.javaee.fotis.po.Book;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 class TestBookEndpoint {
-
-	// /** Endpoint under Test */
-	// @Autowired
-	// BookEndpoint endPoint;
-
-	// @Autowired
-	// private MockMvc mockMvc;
-
+	
 	/** Inject Data access object Layer */
 	@Autowired
 	BookDao sut;
