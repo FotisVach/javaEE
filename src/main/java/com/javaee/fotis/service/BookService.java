@@ -1,4 +1,4 @@
-package com.javaee.fotis.dao;
+package com.javaee.fotis.service;
 
 import java.util.List;
 
@@ -7,10 +7,10 @@ import javax.validation.constraints.NotNull;
 import com.javaee.fotis.po.Book;
 
 /**
- * Data access object for {@link Book}
+ * {@link Book} Service Layer
  */
-public interface BookDao {
-
+public interface BookService {
+	
 	/**
 	 * Fetches a book by its primary key
 	 * 

@@ -22,12 +22,17 @@ public class Book {
 	/** Primary key */
 	@Id
 	@GeneratedValue
-	private Long id;	
+	private Long id;
 	/** Book'stitle */
 	@Column(length = 200)
 	@NotNull
 	@Size(min = 1, max = 200)
 	private String title;
+	/** Book's author */
+	@Column(length = 50)
+	@NotNull
+	@Size(min = 1, max = 50)
+	private String author;
 	/** Book's decription */
 	@Column(length = 1000)
 	@Size(min = 1, max = 1000)
@@ -56,16 +61,17 @@ public class Book {
 	 *
 	 * @return Returns the id
 	 */
-	Long getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * Assigns a new value to the id.
 	 *
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
-	void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -74,17 +80,37 @@ public class Book {
 	 *
 	 * @return Returns the title
 	 */
-	String getTitle() {
+	public String getTitle() {
 		return title;
 	}
 
 	/**
 	 * Assigns a new value to the title.
 	 *
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
-	void setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	/**
+	 * Gets the author.
+	 *
+	 * @return Returns the author
+	 */
+	public String getAuthor() {
+		return author;
+	}
+
+	/**
+	 * Assigns a new value to the author.
+	 *
+	 * @param author
+	 *            the author to set
+	 */
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	/**
@@ -92,16 +118,17 @@ public class Book {
 	 *
 	 * @return Returns the description
 	 */
-	String getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
 	/**
 	 * Assigns a new value to the description.
 	 *
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
-	void setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -110,16 +137,17 @@ public class Book {
 	 *
 	 * @return Returns the unitCost
 	 */
-	Float getUnitCost() {
+	public Float getUnitCost() {
 		return unitCost;
 	}
 
 	/**
 	 * Assigns a new value to the unitCost.
 	 *
-	 * @param unitCost the unitCost to set
+	 * @param unitCost
+	 *            the unitCost to set
 	 */
-	void setUnitCost(Float unitCost) {
+	public void setUnitCost(Float unitCost) {
 		this.unitCost = unitCost;
 	}
 
@@ -128,16 +156,17 @@ public class Book {
 	 *
 	 * @return Returns the isbn
 	 */
-	String getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
 	/**
 	 * Assigns a new value to the isbn.
 	 *
-	 * @param isbn the isbn to set
+	 * @param isbn
+	 *            the isbn to set
 	 */
-	void setIsbn(String isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
@@ -146,16 +175,17 @@ public class Book {
 	 *
 	 * @return Returns the publicationDate
 	 */
-	Date getPublicationDate() {
+	public Date getPublicationDate() {
 		return publicationDate;
 	}
 
 	/**
 	 * Assigns a new value to the publicationDate.
 	 *
-	 * @param publicationDate the publicationDate to set
+	 * @param publicationDate
+	 *            the publicationDate to set
 	 */
-	void setPublicationDate(Date publicationDate) {
+	public void setPublicationDate(Date publicationDate) {
 		this.publicationDate = publicationDate;
 	}
 
@@ -164,16 +194,17 @@ public class Book {
 	 *
 	 * @return Returns the numberOfPages
 	 */
-	Integer getNumberOfPages() {
+	public Integer getNumberOfPages() {
 		return numberOfPages;
 	}
 
 	/**
 	 * Assigns a new value to the numberOfPages.
 	 *
-	 * @param numberOfPages the numberOfPages to set
+	 * @param numberOfPages
+	 *            the numberOfPages to set
 	 */
-	void setNumberOfPages(Integer numberOfPages) {
+	public void setNumberOfPages(Integer numberOfPages) {
 		this.numberOfPages = numberOfPages;
 	}
 
@@ -182,16 +213,17 @@ public class Book {
 	 *
 	 * @return Returns the imageUrl
 	 */
-	String getImageUrl() {
+	public String getImageUrl() {
 		return imageUrl;
 	}
 
 	/**
 	 * Assigns a new value to the imageUrl.
 	 *
-	 * @param imageUrl the imageUrl to set
+	 * @param imageUrl
+	 *            the imageUrl to set
 	 */
-	void setImageUrl(String imageUrl) {
+	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 
@@ -200,27 +232,26 @@ public class Book {
 	 *
 	 * @return Returns the language
 	 */
-	Language getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
 	/**
 	 * Assigns a new value to the language.
 	 *
-	 * @param language the language to set
+	 * @param language
+	 *            the language to set
 	 */
-	void setLanguage(Language language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 
 	@SuppressWarnings("nls")
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", description=" + description + ", unitCost=" + unitCost
-				+ ", isbn=" + isbn + ", publicationDate=" + publicationDate + ", numberOfPages=" + numberOfPages
-				+ ", imageUrl=" + imageUrl + ", language=" + language + "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", description=" + description
+				+ ", unitCost=" + unitCost + ", isbn=" + isbn + ", publicationDate=" + publicationDate
+				+ ", numberOfPages=" + numberOfPages + ", imageUrl=" + imageUrl + ", language=" + language + "]";
 	}
-	
-	
-	
+
 }
