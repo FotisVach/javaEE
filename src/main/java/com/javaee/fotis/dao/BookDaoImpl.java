@@ -61,7 +61,7 @@ public class BookDaoImpl implements BookDao {
 	 */
 	@Override
 	public List<Book> findAll() {
-		TypedQuery<Book> query = em.createQuery("SELECT b FROM Book b ORDER BY b.title", Book.class); //$NON-NLS-1$
+		TypedQuery<Book> query = em.createQuery("SELECT b FROM Book b ORDER BY b.id", Book.class); //$NON-NLS-1$
 		return query.getResultList();
 	}
 

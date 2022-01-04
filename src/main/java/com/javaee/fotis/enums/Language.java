@@ -6,6 +6,6 @@ package com.javaee.fotis.enums;
 @SuppressWarnings("javadoc")
 public enum Language {
 	
-	ENGLISG, FRENCH, SPANISH, GREEK, RUSSIAN
+	ENGLISH, FRENCH, SPANISH, GREEK, RUSSIAN
 
 }

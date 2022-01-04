@@ -20,7 +20,7 @@ class TestBookDaoImpl {
 	BookDao sut;
 
 	/**
-	 * Lifecycle tes.
+	 * Lifecycle test.
 	 */
 	@Transactional
 	@Test
