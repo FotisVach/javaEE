@@ -14,31 +14,39 @@ import javax.validation.constraints.Size;
 
 import com.javaee.fotis.enums.Language;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * Book Persistence Object Entity
  */
 @Entity
+@Schema(description = "Book Entity Representation")
 public class Book {
 	/** Primary key */
 	@Id
 	@GeneratedValue(generator = "book_seq")
+	@Schema(description = "Identifier")
 	private Long id;
 	/** Book'stitle */
 	@Column(length = 200)
 	@NotNull
 	@Size(min = 1, max = 200)
+	@Schema(description = "Title of the book")
 	private String title;
 	/** Book's author */
 	@Column(length = 50)
 	@NotNull
 	@Size(min = 1, max = 50)
+	@Schema(description = "Author of the book")
 	private String author;
 	/** Book's decription */
 	@Column(length = 1000)
 	@Size(min = 1, max = 1000)
+	@Schema(description = "Description of the book")
 	private String description;
 	/** Book's cost */
 	@Column(name = "unit_cost")
+	@Schema(description = "Cost of the book")
 	private Float unitCost;
 	/** Book's isbn */
 	@NotNull

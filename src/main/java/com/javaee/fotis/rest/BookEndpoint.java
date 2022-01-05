@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.javaee.fotis.po.Book;
 import com.javaee.fotis.service.BookService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 /**
  * Book Rest Endpoint
  */
@@ -33,6 +39,13 @@ public class BookEndpoint {
 	 * @param id
 	 * @return a Book
 	 */
+	@Operation(summary = "Get a book by its identifier")
+	@ApiResponses(value = { 
+			  @ApiResponse(responseCode = "200", description = "Book Found", 
+			    content = { @Content(mediaType = "application/json", 
+			      schema = @Schema(implementation = Book.class)) }),
+			  @ApiResponse(responseCode = "204", description = "No book with this ID found", 
+			    content = @Content) })
 	@GetMapping("/{id}")
 	public ResponseEntity<Book> getBook(@PathVariable Long id) {
 		Book book = bookService.find(id);
@@ -50,6 +63,11 @@ public class BookEndpoint {
 	 * @param book
 	 * @return The new Book
 	 */
+	@Operation(summary = "Creates and Stores a new Book")
+	@ApiResponses(value = { 
+			  @ApiResponse(responseCode = "200", description = "New Book saved", 
+			    content = { @Content(mediaType = "application/json", 
+			      schema = @Schema(implementation = Book.class)) }) })
 	@PostMapping()
 	public ResponseEntity<Book> createBook(@RequestBody Book book) {
 		book.setId(null);
@@ -63,6 +81,13 @@ public class BookEndpoint {
 	 * @param id
 	 * @return No content status
 	 */
+	@Operation(summary = "Deletes a book")
+	@ApiResponses(value = { 
+			  @ApiResponse(responseCode = "204", description = "Book Deleted", 
+			    content = { @Content(mediaType = "application/json", 
+			      schema = @Schema(implementation = Book.class)) }),
+			  @ApiResponse(responseCode = "204", description = "No book with this ID found", 
+			    content = @Content) })
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteBook(@PathVariable Long id) {
 		// Try to find Book
@@ -82,6 +107,13 @@ public class BookEndpoint {
 	 * 
 	 * @return Books
 	 */
+	@Operation(summary = "Gets all books from the database")
+	@ApiResponses(value = { 
+			  @ApiResponse(responseCode = "200", description = "One or more Books found", 
+			    content = { @Content(mediaType = "application/json", 
+			      schema = @Schema(implementation = Book.class)) }),
+			  @ApiResponse(responseCode = "204", description = "No book found", 
+			    content = @Content) })
 	@GetMapping()
 	public ResponseEntity<List<Book>> getBooks() {
 		List<Book> books = bookService.findAll();
@@ -98,6 +130,11 @@ public class BookEndpoint {
 	 * 
 	 * @return The number of Books
 	 */
+	@Operation(summary = "Returns how many books exist in the database")
+	@ApiResponses(value = { 
+			  @ApiResponse(responseCode = "200", description = "Number of books found", 
+			    content = { @Content(mediaType = "application/json", 
+			      schema = @Schema(implementation = String.class)) }) })
 	@GetMapping("/count")
 	public ResponseEntity<Long> countBooks() {
 		return new ResponseEntity<Long>(bookService.countAll(), HttpStatus.OK);
