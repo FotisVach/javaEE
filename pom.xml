@@ -66,6 +66,12 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.7</version>
+				<configuration>
+					<excludes>
+						<exclude>com/javaee/fotis/FotisApplication.class</exclude>
+						<exclude>com/javaee/fotis/ServletInitializer.class</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -80,6 +86,7 @@
 						</goals>
 					</execution>
 				</executions>
+				
 			</plugin>
 		</plugins>
 	</build>
