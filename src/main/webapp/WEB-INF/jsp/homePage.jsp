@@ -1,4 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,7 @@
 </head>
 
 <body>
+	<!-- Navbar -->
 	<nav class="navbar navbar-dark bg-dark"
 		aria-label="First navbar example">
 		<div class="container-fluid">
@@ -36,17 +38,49 @@
 		</div>
 	</nav>
 	<div class="main">
-		<!-- Display User Name and Role -->
-		<h1 align="center">WannaBe java EE</h1>
-		<div class="p-5 mb-4 bg-light rounded-3">
+		<!-- Display Books -->
+		<div class="px-5 mb-4 bg-light rounded-3">
 			<div class="container-fluid py-5">
-				<h1 class="display-5 fw-bold">Custom jumbotron</h1>
-				<p class="col-md-8 fs-4">Using a series of utilities, you can
-					create this jumbotron, just like the one in previous versions of
-					Bootstrap. Check out the examples below for how you can remix and
-					restyle it to your liking.</p>
-				<button class="btn btn-primary btn-lg" type="button">Example
-					button</button>
+				<h1 class="display-5 fw-bold">Available Books</h1>
+				<p class="col-md-8 fs-4">Showing available Books from the store</p>
+				
+				<div class="bd-example">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Book Title</th>
+								<th scope="col">Book Author</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Loop over and print our books -->
+							<c:forEach var="tempBook" items="${books}">
+								<!-- Construct an update link with book id -->
+								<c:url var="updateLink" value="#">
+									<c:param name="bookId" value="${tempBook.id}" />
+								</c:url>
+								<!-- Construct an delete link with book id -->
+								<c:url var="deleteLink" value="#">
+									<c:param name="bookId" value="${tempBook.id}" />
+								</c:url>
+								<tr>
+									<th scope="row">${tempBook.id}</th>
+									<td>${tempBook.title}</td>
+									<td>${tempBook.author}</td>
+									<td class="text-end"><a class="btn btn-primary btn-sm"
+										href="${updateLink }">Show Book info</a> <a
+										class="btn btn-danger btn-sm" href="${deleteLink }"
+										onclick="if (!(confirm('Are you sure you want to delete this Book?'))) return false">Delete
+											Book</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+
+				<button class="btn btn-primary btn-lg" type="button">Create Book</button>
 			</div>
 		</div>
 	</div>
