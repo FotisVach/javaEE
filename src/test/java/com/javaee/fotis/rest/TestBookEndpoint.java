@@ -1,20 +1,17 @@
 package com.javaee.fotis.rest;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +23,8 @@ import com.javaee.fotis.service.BookService;
 /**
  * Test class for {@link BookEndpoint}
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SuppressWarnings("nls")
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@AutoConfigureMockMvc
 class TestBookEndpoint {
 	
 	/** Inject Data access object Layer */
@@ -44,37 +39,43 @@ class TestBookEndpoint {
 	private TestRestTemplate restTemplate;
 
 	/** Number of Books in the DB - initial number in DB = 100 books */
-	private Long numberOfBooks;
+	private Long numberOfBooks = 100L;
 
 	/**
 	 * Test Method for {@link BookEndpoint#createBook(Book)}
 	 */
 	@Test
-	@Order(1)
 	void test_createBook() {
-		numberOfBooks = new Long(sut.findAll().size());
+		BookEndpoint ep = new BookEndpoint();
+		ep.bookService = mock(BookService.class);
 		Book book = new Book();
-		book.setAuthor("Charles Bukowski");
-		restTemplate.postForObject("http://localhost:" + port + "/api/books/", new HttpEntity<Book>(book), Book.class);
-
-		numberOfBooks++;
+		book.setId(111L);
+		
+		ResponseEntity<Book> re = ep.createBook(book);
+		assertEquals(HttpStatus.OK, re.getStatusCode());
+		assertNull(re.getBody().getId());
+		verify(ep.bookService).create(any(Book.class));
 	}
 
 	/**
 	 * Test Method for {@link BookEndpoint#deleteBook(Long)}
 	 */
 	@Test
-	@Order(2)
 	void test_deleteBook() {
-		restTemplate.delete("http://localhost:" + port + "/api/books/1001");
-		assertEquals(100, sut.findAll().size());
-
-		numberOfBooks--;
 		// Test functionality when the book is not exists
 		ResponseEntity<String> response = restTemplate.exchange("http://localhost:" + port + "/api/books/1001", 
 				HttpMethod.DELETE, null, String.class);
 		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 		assertTrue(response.getBody().contains("Book id not found - 1001"));
+		// Test functionality when the book is not exists
+		BookEndpoint ep = new BookEndpoint();
+		ep.bookService = mock(BookService.class);
+		Long id = 666L;
+		when(ep.bookService.find(id)).thenReturn(new Book());
+		
+		assertEquals(HttpStatus.NO_CONTENT, ep.deleteBook(id).getStatusCode());
+		verify(ep.bookService).find(id);
+		verify(ep.bookService).delete(id);
 	}
 
 	/**

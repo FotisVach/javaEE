@@ -34,6 +34,7 @@ class TestBookDaoImpl {
 		String bookauthor = "Hawking Stephen"; //$NON-NLS-1$
 		b.setTitle(bookTitle);
 		b.setAuthor(bookauthor);
+		b.setIsbn("random"); //$NON-NLS-1$
 		sut.create(b);
 		
 		Long bookKey = b.getId();

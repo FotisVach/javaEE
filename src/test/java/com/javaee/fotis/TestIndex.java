@@ -1,6 +1,6 @@
 package com.javaee.fotis;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,10 @@ class TestIndex {
 	 */
 	@Test
 	void test_countBooks() {
-		assertTrue(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class)
+		assertFalse(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class)
 				.contains("JavaEE Example"));
+		assertTrue(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class)
+				.contains("Available Books"));
 	}
 
 }
