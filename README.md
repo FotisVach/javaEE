@@ -1,5 +1,5 @@
 # javaEE
-A Java EE Demo project 
+A **WannaBe** Java EE Demo project
 
 WIP
 
