@@ -18,17 +18,17 @@ import com.javaee.fotis.service.BookService;
 @SuppressWarnings("nls")
 @Controller
 public class ControllerIndex {
-	
+
 	/** Flag for displaying message on delete */
 	private Boolean deletedFlag = false;
-	
+
 	/** Need to inject the Book Service */
 	@Autowired
 	private BookService bookService;
-	
+
 	/** The home Page URL */
 	private static final String homePageUrl = "/home";
-	
+
 	/**
 	 * Home Page Controller
 	 * 
@@ -45,11 +45,11 @@ public class ControllerIndex {
 		}
 		return "homePage";
 	}
-	
+
 	/**
 	 * Delete book process
 	 * 
-	 * @param bookId 
+	 * @param bookId
 	 * @return homePage
 	 */
 	@RequestMapping("deleteBook")
@@ -60,7 +60,23 @@ public class ControllerIndex {
 		// re-direct to /home
 		return "redirect:/home";
 	}
-	
+
+	/**
+	 * Show Book Page Controller
+	 * 
+	 * @param bookId
+	 * @param model
+	 * @return The showBookPage
+	 */
+	@GetMapping("showBookPage")
+	public String showBookPage(@RequestParam("bookId") Long bookId, Model model) {
+		// Get user from DB
+		Book book = bookService.find(bookId);
+		// Set user as o model attribute to pre-populate form
+		model.addAttribute(book);
+		return "showBookPage";
+	}
+
 	/**
 	 * Redirects to /home
 	 * 
@@ -70,6 +86,5 @@ public class ControllerIndex {
 	public String contextRootPage() {
 		return "redirect:" + homePageUrl;
 	}
-
 
 }

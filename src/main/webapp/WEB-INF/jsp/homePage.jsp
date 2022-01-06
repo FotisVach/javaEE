@@ -16,27 +16,8 @@
 
 <body>
 	<!-- Navbar -->
-	<nav class="navbar navbar-dark bg-dark"
-		aria-label="First navbar example">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Wanna Be JavaEE</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarsExample01"
-				aria-controls="navbarsExample01" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<jsp:include page="navbar.jsp"></jsp:include>
 
-			<div class="collapse navbar-collapse" id="navbarsExample01">
-				<ul class="navbar-nav me-auto mb-2">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/swagger-ui/index.html">Swagger - UI</a></li>
-					<li class="nav-item"><a class="nav-link" href="/v3/api-docs">Docs JSON</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<div class="main">
 		<!-- Display Books -->
 		<div class="px-5 mb-4 bg-light rounded-3">
@@ -64,7 +45,7 @@
 							<!-- Loop over and print our books -->
 							<c:forEach var="tempBook" items="${books}">
 								<!-- Construct an update link with book id -->
-								<c:url var="updateLink" value="#">
+								<c:url var="updateLink" value="showBookPage">
 									<c:param name="bookId" value="${tempBook.id}" />
 								</c:url>
 								<!-- Construct an delete link with book id -->
