@@ -101,7 +101,6 @@ public class ControllerIndex {
 	 */
 	@PostMapping("/addBook")
 	public String addBook(@ModelAttribute("book") Book book) {
-		book.setPublicationDate(null);
 		bookService.create(book);
 		return "redirect:" + homePageUrl;
 	}

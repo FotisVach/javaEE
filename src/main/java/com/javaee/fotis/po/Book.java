@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.javaee.fotis.enums.Language;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -54,6 +56,7 @@ public class Book {
 	private String isbn;
 	/** Book's publication date */
 	@Column(name = "publication_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Past
 	private Date publicationDate;

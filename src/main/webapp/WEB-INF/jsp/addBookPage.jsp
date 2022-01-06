@@ -66,13 +66,14 @@
 										placeholder="${book.isbn}">
 								</div>
 							</div>
-							<%-- 							<div class="form-group row">
-								<label for="publicationDate" class="col-form-label">Book publicationDate :</label>
+							<div class="form-group row">
+								<label for="publicationDate" class="col-form-label">Book
+									publicationDate :</label>
 								<div class="col">
 									<input type="date" class="form-control" id="publicationDate"
 										name="publicationDate" value="${book.publicationDate}">
 								</div>
-							</div> --%>
+							</div>
 							<div class="form-group row">
 								<label for="numberOfPages" class="col-form-label">Book
 									numberOfPages :</label>
@@ -93,14 +94,18 @@
 								<label for="language" class="col-form-label">Book
 									language :</label>
 								<div class="col">
-									<form:select class="btn btn-light btn-outline-secondary dropdown-toggle" items="${allLanguages}" path="language" id="language"
+									<form:select
+										class="btn btn-light btn-outline-secondary dropdown-toggle"
+										items="${allLanguages}" path="language" id="language"
 										name="language" />
 								</div>
 							</div>
-							<input class="my-3 btn btn-primary btn" type="submit" value="Save" />
-							<a class="my-3 btn btn-secondary btn" href="/home">Return to home Page</a>
+							<input class="my-3 btn btn-primary btn" type="submit"
+								value="Save" />
+							<a class="my-3 btn btn-secondary btn" href="/home">Return to
+								home Page</a>
 						</form:form>
-						
+
 					</div>
 
 
