@@ -25,6 +25,9 @@ public class ControllerIndex {
 
 	/** Flag for displaying message on delete */
 	private Boolean deletedFlag = false;
+	
+	/** Insert error message */
+	private String insertErrorMsg;
 
 	/** Need to inject the Book Service */
 	@Autowired
@@ -46,6 +49,10 @@ public class ControllerIndex {
 		if (deletedFlag == true) {
 			model.addAttribute("deletedFlag", true);
 			deletedFlag = false;
+		}
+		if (insertErrorMsg != null) {
+			model.addAttribute("insertErrorMsg", insertErrorMsg);
+			insertErrorMsg = null;
 		}
 		return "homePage";
 	}
@@ -101,7 +108,13 @@ public class ControllerIndex {
 	 */
 	@PostMapping("/addBook")
 	public String addBook(@ModelAttribute("book") Book book) {
-		bookService.create(book);
+		try {
+			bookService.create(book);
+		} catch (Exception e) {
+			// TODO : log this - fix app lgging
+			e.printStackTrace();
+			insertErrorMsg = e.getMessage();
+		}
 		return "redirect:" + homePageUrl;
 	}
 

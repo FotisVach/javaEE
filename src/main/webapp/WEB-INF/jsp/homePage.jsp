@@ -23,10 +23,14 @@
 		<div class="px-5 mb-4 bg-light rounded-3">
 			<div class="container-fluid py-5">
 
-				<!-- Check for logout -->
+				<!-- Check for successfull delete -->
 				<c:if test="${deletedFlag}">
 					<div class="alert alert-success" role="alert">Book deleted
 						successfully</div>
+				</c:if>
+				<!-- Check for error during creation -->
+				<c:if test="${insertErrorMsg != null}">
+					<div class="alert alert-danger" role="alert">${insertErrorMsg}</div>
 				</c:if>
 
 				<h1 class="display-5 fw-bold">Available Books</h1>
