@@ -93,14 +93,14 @@
 								<label for="language" class="col-form-label">Book
 									language :</label>
 								<div class="col">
-									<input type="text" class="form-control" id="language"
-										name="language" placeholder="${book.language}">
+									<form:select class="btn btn-light btn-outline-secondary dropdown-toggle" items="${allLanguages}" path="language" id="language"
+										name="language" />
 								</div>
 							</div>
-							<input type="submit" value="Save" />
+							<input class="my-3 btn btn-primary btn" type="submit" value="Save" />
+							<a class="my-3 btn btn-secondary btn" href="/home">Return to home Page</a>
 						</form:form>
-						<a class="my-3 btn btn-primary btn-sm" href="/home">Return to
-							home Page</a>
+						
 					</div>
 
 
