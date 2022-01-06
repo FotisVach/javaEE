@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -75,6 +77,31 @@ public class ControllerIndex {
 		// Set user as o model attribute to pre-populate form
 		model.addAttribute(book);
 		return "showBookPage";
+	}
+
+	/**
+	 * Go to Page to add a new Book.
+	 * 
+	 * @param model
+	 * @return the addBookPage
+	 */
+	@GetMapping("/addBook")
+	public String addBookPage(Model model) {
+		model.addAttribute("book", new Book());
+		return "addBookPage";
+	}
+
+	/**
+	 * Saves a new Book
+	 *
+	 * @param book
+	 * @return to home Page
+	 */
+	@PostMapping("/addBook")
+	public String addBook(@ModelAttribute("book") Book book) {
+		book.setPublicationDate(null);
+		bookService.create(book);
+		return "redirect:" + homePageUrl;
 	}
 
 	/**

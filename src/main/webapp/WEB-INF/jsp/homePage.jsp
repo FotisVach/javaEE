@@ -25,12 +25,13 @@
 
 				<!-- Check for logout -->
 				<c:if test="${deletedFlag}">
-					<div class="alert alert-success" role="alert">Book deleted successfully</div>
+					<div class="alert alert-success" role="alert">Book deleted
+						successfully</div>
 				</c:if>
 
 				<h1 class="display-5 fw-bold">Available Books</h1>
 				<p class="col-md-8 fs-4">Showing available Books from the store</p>
-				
+
 				<div class="bd-example">
 					<table class="table table-striped table-hover">
 						<thead>
@@ -66,8 +67,8 @@
 						</tbody>
 					</table>
 				</div>
-
-				<button class="btn btn-primary btn-lg" type="button">Create Book</button>
+				<a class="btn btn-primary btn-lg" href="/addBook">Create Book</a>
+				<!-- <button class="btn btn-primary btn-lg" type="button">Create Book</button> -->
 			</div>
 		</div>
 	</div>
