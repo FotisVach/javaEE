@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaee.fotis.po.Book;
 import com.javaee.fotis.service.BookService;
@@ -17,6 +18,9 @@ import com.javaee.fotis.service.BookService;
 @SuppressWarnings("nls")
 @Controller
 public class ControllerIndex {
+	
+	/** Flag for displaying message on delete */
+	private Boolean deletedFlag = false;
 	
 	/** Need to inject the Book Service */
 	@Autowired
@@ -35,7 +39,26 @@ public class ControllerIndex {
 	public String homePage(Model model) {
 		List<Book> books = bookService.findAll();
 		model.addAttribute("books", books);
+		if (deletedFlag == true) {
+			model.addAttribute("deletedFlag", true);
+			deletedFlag = false;
+		}
 		return "homePage";
+	}
+	
+	/**
+	 * Delete book process
+	 * 
+	 * @param bookId 
+	 * @return homePage
+	 */
+	@RequestMapping("deleteBook")
+	public String delete(@RequestParam("bookId") Long bookId) {
+		// delete the user
+		bookService.delete(bookId);
+		deletedFlag = true;
+		// re-direct to /home
+		return "redirect:/home";
 	}
 	
 	/**

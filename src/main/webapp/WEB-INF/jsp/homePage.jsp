@@ -41,6 +41,12 @@
 		<!-- Display Books -->
 		<div class="px-5 mb-4 bg-light rounded-3">
 			<div class="container-fluid py-5">
+
+				<!-- Check for logout -->
+				<c:if test="${deletedFlag}">
+					<div class="alert alert-success" role="alert">Book deleted successfully</div>
+				</c:if>
+
 				<h1 class="display-5 fw-bold">Available Books</h1>
 				<p class="col-md-8 fs-4">Showing available Books from the store</p>
 				
@@ -62,7 +68,7 @@
 									<c:param name="bookId" value="${tempBook.id}" />
 								</c:url>
 								<!-- Construct an delete link with book id -->
-								<c:url var="deleteLink" value="#">
+								<c:url var="deleteLink" value="/deleteBook">
 									<c:param name="bookId" value="${tempBook.id}" />
 								</c:url>
 								<tr>
