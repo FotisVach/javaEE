@@ -27,12 +27,15 @@ public class ServletFindBook extends HttpServlet {
 	/**	*/
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("nls")
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long id = new Long(req.getParameter("id")); //$NON-NLS-1$
 		
 		Book book = bookService.find(id);
-//		resp.getWriter().write(book.toString());
+		if (book == null) {
+			throw new RuntimeException("Bad Request - Book id not found: " + id);
+		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/showBookPageServlet.jsp");
 		req.setAttribute("book", book);
 		dispatcher.forward(req, resp);
