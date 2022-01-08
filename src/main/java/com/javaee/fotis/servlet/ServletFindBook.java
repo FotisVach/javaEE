@@ -2,6 +2,7 @@ package com.javaee.fotis.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,10 @@ public class ServletFindBook extends HttpServlet {
 		Long id = new Long(req.getParameter("id")); //$NON-NLS-1$
 		
 		Book book = bookService.find(id);
-		resp.getWriter().write(book.toString());
+//		resp.getWriter().write(book.toString());
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/showBookPageServlet.jsp");
+		req.setAttribute("book", book);
+		dispatcher.forward(req, resp);
 	}
 
 }
