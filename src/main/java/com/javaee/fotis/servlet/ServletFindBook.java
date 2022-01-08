@@ -36,7 +36,7 @@ public class ServletFindBook extends HttpServlet {
 		if (book == null) {
 			throw new RuntimeException("Bad Request - Book id not found: " + id);
 		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/showBookPageServlet.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/showBookPage.jsp");
 		req.setAttribute("book", book);
 		dispatcher.forward(req, resp);
 	}

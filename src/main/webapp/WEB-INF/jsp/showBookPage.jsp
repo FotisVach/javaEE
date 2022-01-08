@@ -27,78 +27,46 @@
 					<h2 class="card-title text-center text-primary">Book Info:</h2>
 					<div class="card-body">
 						<form:form>
-							<fieldset disabled>
-								<div class="form-group row">
-									<label for="title" class="col-form-label">Book Title :</label>
-									<div class="col">
-										<input type="text" class="form-control" id="title"
-											name="title" placeholder="${book.title}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="author" class="col-form-label">Book author
-										:</label>
-									<div class="col">
-										<input type="text" class="form-control" id="author"
-											name="author" placeholder="${book.author}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="description" class="col-form-label">Book
-										description :</label>
-									<div class="col">
-										<textarea class="form-control" id="description"
-											name="description" placeholder="${book.description}"></textarea>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="unitCost" class="col-form-label">Book
-										unitCost :</label>
-									<div class="col">
-										<input type="number" class="form-control" id="unitCost"
-											name="unitCost" placeholder="${book.unitCost}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="isbn" class="col-form-label">Book isbn :</label>
-									<div class="col">
-										<input type="text" class="form-control" id="isbn" name="isbn"
-											placeholder="${book.isbn}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="publicationDate" class="col-form-label">Book
-										publicationDate :</label>
-									<div class="col">
-										<input type="date" class="form-control" id="publicationDate"
-											name="publicationDate" value="${book.publicationDate}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="numberOfPages" class="col-form-label">Book
-										numberOfPages :</label>
-									<div class="col">
-										<input type="number" class="form-control" id="numberOfPages"
-											name="numberOfPages" placeholder="${book.numberOfPages}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="imageUrl" class="col-form-label">Book
-										imageUrl :</label>
-									<div class="col">
-										<input type="text" class="form-control" id="imageUrl"
-											name="imageUrl" placeholder="${book.imageUrl}">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="language" class="col-form-label">Book
-										language :</label>
-									<div class="col">
-										<input type="text" class="form-control" id="language"
-											name="language" placeholder="${book.language}">
-									</div>
-								</div>
-							</fieldset>
+							<table>
+									<tr>
+										<th scope="row">Book Title :</th>
+										<td><div class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.title }</div></td>
+									</tr>
+									
+									<tr>
+										<th scope="row">Book author :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.author }</label></td>
+									</tr>
+									<tr>
+										<th scope="row">Book description :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.description }</label></td>
+									</tr>
+									<tr>
+										<th scope="row">Book unitCost :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.unitCost }</label></td>
+									</tr>
+									<tr>
+										<th scope="row">Book isbn :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.isbn }</label></td>
+									</tr>
+									<tr>
+										<th scope="row">Book publicationDate :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.publicationDate }</label></td>
+									</tr>
+									<tr>
+										<th scope="row">Book numberOfPages :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.numberOfPages }</label></td>
+									</tr>
+									<tr>
+										<th scope="row">Book imageUrl :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.imageUrl }</label></td>
+									</tr>
+									<tr>
+										<th scope="row">Book language :</th>
+										<td><label class="shadow p-3 m-2 border rounded-3 border-primary d-flex flex-column">${ book.language }</label></td>
+									</tr>
+								
+								</table>
 						</form:form>
 						<a class="my-3 btn btn-primary btn-sm" href="/home">Return to
 							home Page</a>
