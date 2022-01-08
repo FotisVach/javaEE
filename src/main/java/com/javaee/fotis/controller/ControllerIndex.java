@@ -129,7 +129,7 @@ public class ControllerIndex {
 	}
 	
 	/**
-	 * List of alll Languages
+	 * List of all Languages
 	 * 
 	 * @return List of all Languages
 	 */

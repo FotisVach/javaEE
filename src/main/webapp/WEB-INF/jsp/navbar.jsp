@@ -1,6 +1,3 @@
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 	<!-- Navbar -->
 	<nav class="navbar navbar-dark bg-dark"
 		aria-label="First navbar example">
@@ -23,6 +20,3 @@
 			</div>
 		</div>
 	</nav>
-
-</body>
-</html>
