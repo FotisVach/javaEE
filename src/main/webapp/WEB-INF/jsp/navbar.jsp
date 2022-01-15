@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-dark bg-dark"
 		aria-label="First navbar example">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Wanna Be JavaEE</a>
+			<a class="navbar-brand" href="/">Wanna Be JavaEE - ${ projectVersion }</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarsExample01"
 				aria-controls="navbarsExample01" aria-expanded="false"
