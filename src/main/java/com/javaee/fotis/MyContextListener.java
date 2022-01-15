@@ -8,11 +8,12 @@ import javax.servlet.annotation.WebListener;
  * PoC Servlet Context Listener
  */
 @WebListener
-public class MyAppListener implements ServletContextListener {
+public class MyContextListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		sce.getServletContext().log(">>>Custom Servlet Context Listener"); //$NON-NLS-1$
+		sce.getServletContext().setSessionTimeout(1);
 	}
 	
 }
