@@ -17,15 +17,15 @@ public class MySessionListener implements HttpSessionListener {
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
 		Date date = new Date();
-		se.getSession().getServletContext().log(">>> Session Created: " + new Timestamp(date.getTime()));
+		se.getSession().getServletContext()
+				.log("Session Created:: ID=" + se.getSession().getId() + '-' + new Timestamp(date.getTime()));
 	}
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent se) {
 		Date date = new Date();
-		se.getSession().getServletContext().log(">>> Session Destroyed: " + new Timestamp(date.getTime()));
+		se.getSession().getServletContext()
+				.log("Session Destroyed:: ID=" + se.getSession().getId() + '-' + new Timestamp(date.getTime()));
 	}
-	
-	
 
 }
