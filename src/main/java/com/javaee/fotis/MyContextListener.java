@@ -1,8 +1,15 @@
 package com.javaee.fotis;
 
+import java.io.FileReader;
+import java.io.IOException;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import org.apache.maven.model.Model;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 /**
  * PoC Servlet Context Listener
@@ -21,7 +28,16 @@ public class MyContextListener implements ServletContextListener {
 		startTime = System.currentTimeMillis();
 		sce.getServletContext().log(">>>Custom Servlet Context Listener");
 		sce.getServletContext().setSessionTimeout(1);
-		sce.getServletContext().setAttribute("projectVersion", "0.0.1-SNAPSHOT");
+		// Get pom version from pom xml - we display this in navbar
+		MavenXpp3Reader reader = new MavenXpp3Reader();
+		String version;
+        try {
+			Model model = reader.read(new FileReader("pom.xml"));
+			version = model.getVersion();
+		} catch (IOException | XmlPullParserException e) {
+			version = "Unknown version";
+		}
+		sce.getServletContext().setAttribute("projectVersion", version);
 	}
 
 	@Override
