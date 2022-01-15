@@ -54,7 +54,7 @@
 									<c:param name="bookId" value="${tempBook.id}" />
 								</c:url>
 								<!-- Construct an delete link with book id -->
-								<c:url var="deleteLink" value="/deleteBook">
+								<c:url var="deleteLink" value="deleteBook">
 									<c:param name="bookId" value="${tempBook.id}" />
 								</c:url>
 								<tr>
@@ -72,7 +72,6 @@
 					</table>
 				</div>
 				<a class="btn btn-primary btn-lg" href="/addBook">Create Book</a>
-				<!-- <button class="btn btn-primary btn-lg" type="button">Create Book</button> -->
 			</div>
 		</div>
 	</div>

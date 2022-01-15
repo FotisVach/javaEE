@@ -1,5 +1,4 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -105,12 +104,8 @@
 							<a class="my-3 btn btn-secondary btn" href="/home">Return to
 								home Page</a>
 						</form:form>
-
 					</div>
-
-
 				</div>
-
 			</div>
 		</div>
 	</div>
