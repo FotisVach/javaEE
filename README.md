@@ -15,7 +15,7 @@ WIP
 
 ### Docker 
 
-1. Initial run docker image with : sudo docker run --name wannabe -it -p 8080:8080 fotisvach/wannabejavaee:v1.0
+1. Initial run docker image with : sudo docker run --name wannabe -it -p 8080:8080 fotisvach/wannabejavaee:v2.0
 1. Exit the container terminal with : ctlr + P + Q
 1. Stop the container with : sudo docker container stop wannabe
 1. You can start the container again with : sudo docker container start wannabe
