@@ -86,7 +86,7 @@ public class BookEndpoint {
 			  @ApiResponse(responseCode = "204", description = "Book Deleted", 
 			    content = { @Content(mediaType = "application/json", 
 			      schema = @Schema(implementation = Book.class)) }),
-			  @ApiResponse(responseCode = "204", description = "No book with this ID found", 
+			  @ApiResponse(responseCode = "404", description = "No book with this ID found", 
 			    content = @Content) })
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteBook(@PathVariable Long id) {
