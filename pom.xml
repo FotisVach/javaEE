@@ -74,7 +74,7 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 
-		<!-- Read info inso java from pom -->
+		<!-- Read info info java from pom -->
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-model</artifactId>

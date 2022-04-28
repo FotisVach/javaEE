@@ -83,8 +83,8 @@ class TestBookEndpoint {
 	 */
 	@Test
 	void test_countBooks() {
-		assertTrue(restTemplate.getForObject("http://localhost:" + port + "/api/books/count", Long.class)
-				.equals(numberOfBooks.longValue()));
+		assertEquals(numberOfBooks.longValue(),
+				restTemplate.getForObject("http://localhost:" + port + "/api/books/count", Long.class));
 	}
 
 	/**
@@ -107,7 +107,7 @@ class TestBookEndpoint {
 		ep.bookService = mock(BookService.class);
 		when(ep.bookService.findAll()).thenReturn(new ArrayList<Book>());
 		
-		assertTrue(ep.getBooks().getStatusCode() == HttpStatus.NO_CONTENT);
+		assertSame(HttpStatus.NO_CONTENT, ep.getBooks().getStatusCode());
 	}
 
 	/**

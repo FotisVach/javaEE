@@ -51,10 +51,10 @@ public class BookEndpoint {
 		Book book = bookService.find(id);
 		
 		if (book == null) {
-			return new ResponseEntity<Book>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		
-		return new ResponseEntity<Book>(book, HttpStatus.OK);
+		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class BookEndpoint {
 	public ResponseEntity<Book> createBook(@RequestBody Book book) {
 		book.setId(null);
 		bookService.create(book);
-		return new ResponseEntity<Book>(book, HttpStatus.OK);
+		return new ResponseEntity<>(book, HttpStatus.OK);
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class BookEndpoint {
 		// Else Delete Book
 		bookService.delete(id);
 		// We could also change the response to a String confirmation msg
-		return new ResponseEntity<List<Book>>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	/**
@@ -118,11 +118,11 @@ public class BookEndpoint {
 	public ResponseEntity<List<Book>> getBooks() {
 		List<Book> books = bookService.findAll();
 		
-		if (books.size() == 0) {
-			return new ResponseEntity<List<Book>>(HttpStatus.NO_CONTENT);
+		if (books.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	
-		return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
+		return new ResponseEntity<>(books, HttpStatus.OK);
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class BookEndpoint {
 			      schema = @Schema(implementation = String.class)) }) })
 	@GetMapping("/count")
 	public ResponseEntity<Long> countBooks() {
-		return new ResponseEntity<Long>(bookService.countAll(), HttpStatus.OK);
+		return new ResponseEntity<>(bookService.countAll(), HttpStatus.OK);
 	}
 	
 	

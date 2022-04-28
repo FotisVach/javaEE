@@ -34,7 +34,7 @@ public class ControllerIndex {
 	private BookService bookService;
 
 	/** The home Page URL */
-	private static final String homePageUrl = "/home";
+	private static final String HOME_PAGE_URL = "/home";
 
 	/**
 	 * Home Page Controller
@@ -42,11 +42,11 @@ public class ControllerIndex {
 	 * @param model
 	 * @return The homePage
 	 */
-	@RequestMapping(homePageUrl)
+	@RequestMapping(HOME_PAGE_URL)
 	public String homePage(Model model) {
 		List<Book> books = bookService.findAll();
 		model.addAttribute("books", books);
-		if (deletedFlag == true) {
+		if (deletedFlag) {
 			model.addAttribute("deletedFlag", true);
 			deletedFlag = false;
 		}
@@ -115,7 +115,7 @@ public class ControllerIndex {
 			e.printStackTrace();
 			insertErrorMsg = e.getMessage();
 		}
-		return "redirect:" + homePageUrl;
+		return "redirect:" + HOME_PAGE_URL;
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class ControllerIndex {
 	 */
 	@GetMapping("/")
 	public String contextRootPage() {
-		return "redirect:" + homePageUrl;
+		return "redirect:" + HOME_PAGE_URL;
 	}
 	
 	/**
@@ -135,8 +135,7 @@ public class ControllerIndex {
 	 */
 	@ModelAttribute("allLanguages")
 	public List<Language> getAllLanguages() {
-		List<Language> allLanguages = Arrays.asList(Language.values());
-		return allLanguages;
+		return Arrays.asList(Language.values());
 	}
 
 }
