@@ -89,7 +89,7 @@ public class BookEndpoint {
 			  @ApiResponse(responseCode = "404", description = "No book with this ID found", 
 			    content = @Content) })
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteBook(@PathVariable Long id) {
+	public ResponseEntity<String> deleteBook(@PathVariable Long id) {
 		// Try to find Book
 		Book bookToBeDeleted = bookService.find(id);
 		// If it does not exist throw a RuntimeException
