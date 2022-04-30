@@ -29,9 +29,6 @@ public class MyContextListener implements ServletContextListener {
 		sce.getServletContext().log(">>>Custom Servlet Context Listener");
 		sce.getServletContext().setSessionTimeout(1);
 		// Print Target enviroment
-		System.out.println("***************************************");
-		System.out.println("\tTARGET ENVIROMENT: " + System.getProperty("envTarget").toUpperCase());
-		System.out.println("***************************************");
 		// Get pom version from pom xml - we display this in navbar
 		MavenXpp3Reader reader = new MavenXpp3Reader();
 		String version;
