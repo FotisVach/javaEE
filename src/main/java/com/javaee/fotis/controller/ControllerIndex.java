@@ -24,17 +24,17 @@ import com.javaee.fotis.service.BookService;
 public class ControllerIndex {
 
 	/** Flag for displaying message on delete */
-	private Boolean deletedFlag = false;
+	Boolean deletedFlag = false;
 	
 	/** Insert error message */
-	private String insertErrorMsg;
+	String insertErrorMsg;
 
 	/** Need to inject the Book Service */
 	@Autowired
-	private BookService bookService;
+	BookService bookService;
 
 	/** The home Page URL */
-	private static final String HOME_PAGE_URL = "/home";
+	static final String HOME_PAGE_URL = "/home";
 
 	/**
 	 * Home Page Controller
