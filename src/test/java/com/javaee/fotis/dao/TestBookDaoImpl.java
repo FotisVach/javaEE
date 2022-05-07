@@ -46,7 +46,6 @@ class TestBookDaoImpl {
 		// Check the found book
 		assertEquals(bookTitle, newBook.getTitle());
 		assertEquals(bookauthor, newBook.getAuthor());
-		System.out.println(newBook);
 		
 		// Test that counts books
 		assertEquals(booksInDb + 1, sut.countAll());
