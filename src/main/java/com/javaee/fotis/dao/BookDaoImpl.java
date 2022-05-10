@@ -3,10 +3,10 @@ package com.javaee.fotis.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaee.fotis.po.Book;
@@ -18,7 +18,7 @@ import com.javaee.fotis.po.Book;
 public class BookDaoImpl implements BookDao {
 
 	/** Persistence Context manager */
-	@Autowired
+	@PersistenceContext
 	EntityManager em;
 
 	/**
