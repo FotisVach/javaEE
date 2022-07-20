@@ -1,5 +1,7 @@
 FROM openjdk:8-jdk-alpine
 
+LABEL author="Fotis Vachtsiavanos"
+
 # Create firectory in container image for app code
 RUN mkdir -p /usr/src/app
 

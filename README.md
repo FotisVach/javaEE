@@ -1,5 +1,5 @@
 # javaEE
-A **WannaBe** Java EE Demo project
+A Spring Boot Demo project
 
 WIP
 
@@ -22,3 +22,8 @@ WIP
 1. Exit the container terminal with : ctlr + P + Q
 1. Stop the container with : sudo docker container stop wannabe
 1. You can start the container again with : sudo docker container start wannabe
+
+#### Build and push Docker image:
+
+1. sudo docker image build -t fotisvach/wannabejavaee:[tagVersion] .
+1. sudo docker push fotisvach/wannabejavaee:[tagVersion]
