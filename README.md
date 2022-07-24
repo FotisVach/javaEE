@@ -23,6 +23,11 @@ WIP
 1. Stop the container with : sudo docker container stop wannabe
 1. You can start the container again with : sudo docker container start wannabe
 
+Postgres SQL docker instructions:
+1. docker pull postgres:alpine3.16
+1. sudo docker create --name javaeepostgres -e POSTGRES_PASSWORD=vach -e POSTGRES_USER=fotis -p 5432:5432 postgres:alpine3.16
+1. sudo docker start javaeepostgres
+
 #### Build and push Docker image:
 
 1. sudo docker image build -t fotisvach/wannabejavaee:[tagVersion] .
