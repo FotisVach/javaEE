@@ -2,16 +2,18 @@ FROM openjdk:8-jdk-alpine
 
 LABEL author="Fotis Vachtsiavanos"
 
-# Create firectory in container image for app code
-RUN mkdir -p /usr/src/app
+# Create directory in container image for app jsp
+RUN mkdir -p /src/main/webapp/WEB-INF/jsp
 
-# Copy app code to /usr/src/app
-COPY . /usr/src/app
+# Copy jsp files in /src/main/webapp/WEB-INF/jsp
+COPY src/main/webapp/WEB-INF/jsp /src/main/webapp/WEB-INF/jsp
 
-# Set working directory context
-WORKDIR /usr/src/app
+# Copy pom.xml in docker
+COPY pom.xml pom.xml
 
-Run ./mvnw package
+# Copy jar into docker image
+ARG JAR_FILE=target/*.jar
+COPY $JAR_FILE app.jar
 
-# RUN app?
-ENTRYPOINT ["./mvnw", "spring-boot:run"]
+# RUN app
+ENTRYPOINT ["java","-jar","/app.jar"]
