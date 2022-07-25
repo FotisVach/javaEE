@@ -15,9 +15,15 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class ConfigurationPROD {
 	
+	/**
+	 * DB username
+	 */
 	@Value("${USER}")
 	String username;
 	
+	/**
+	 * DB password
+	 */
 	@Value("${PASS}")
 	String password;
 	
