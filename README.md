@@ -19,23 +19,18 @@ WIP
 
 ### Docker 
 
-1. Initial run docker image with : 
-    * sudo docker run --name wannabedev -it --net=host fotisvach/wannabejavaee:v2.2
-    * sudo docker run --name wannabeuat -it --net=host -e SPRING_PROFILES_ACTIVE=uat -e USER=fotis -e PASS=vach fotisvach/wannabejavaee:v2.2
-    * sudo docker run --name wannabeprod -it --net=host -e SPRING_PROFILES_ACTIVE=prod -e USER=fotis -e PASS=vach fotisvach/wannabejavaee:v2.2
-2. Exit the container terminal with : ctlr + P + Q
-3. Stop the container with : sudo docker container stop wannabe
-4. You can start the container again with : sudo docker container start wannabe
-
 Postgres SQL docker instructions:
 1. docker pull postgres:alpine3.16
 1. sudo docker create --name javaeepostgres -e POSTGRES_PASSWORD=vach -e POSTGRES_USER=fotis -p 5432:5432 postgres:alpine3.16
 1. sudo docker start javaeepostgres
 1. you have to run manualy the postgreSQL_db_init.sql to initialize the db.
 
+1. Initial run docker image with : 
+    * sudo docker compose up --build
+    * sudo docker compose -f docker-compose-uat.yml up --build
+    * sudo docker compose -f docker-compose-prod.yml up --build
+
 #### Build and push Docker image:
 
 1. sudo docker image build -t fotisvach/wannabejavaee:[tagVersion] .
 1. sudo docker push fotisvach/wannabejavaee:[tagVersion]
-
-

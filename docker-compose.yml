@@ -1,0 +1,9 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wannabeDEV_local
+    network_mode: "host"
+    ports:
+      - "8080:8080"
